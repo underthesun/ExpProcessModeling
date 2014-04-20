@@ -8,11 +8,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.awt.Point;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,9 +30,9 @@ import processcheck.NodeProcess;
 public class POJOUtils {
 
     public static void toFile(ArrayList<Node> nodes, ArrayList<NodeProcess> nodeProcesses, File file) {
-        BufferedWriter bw = null;
+        OutputStreamWriter outputStreamWriter = null;
         try {
-            bw = new BufferedWriter(new FileWriter(file));
+            outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file));
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
             ArrayList<NodeProcessPOJO> nodeProcessPOJO = nodeProcessToPOJO(nodeProcesses);
@@ -38,12 +40,12 @@ public class POJOUtils {
             ProcessPOJO pojo = new ProcessPOJO();
             pojo.setNodeProcessPOJO(nodeProcessPOJO);
             pojo.setNodePOJO(nodePOJO);
-            gson.toJson(pojo, ProcessPOJO.class, bw);
+            gson.toJson(pojo, ProcessPOJO.class, outputStreamWriter);
         } catch (IOException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                bw.close();
+                outputStreamWriter.close();
             } catch (IOException ex) {
                 Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -99,11 +101,11 @@ public class POJOUtils {
     }
 
     public static void fromFile(File file, NodePanel nodePanel) {
-        BufferedReader br = null;
+        InputStreamReader inputStreamReader = null;
         try {
-            br = new BufferedReader(new FileReader(file));
+            inputStreamReader = new InputStreamReader(new FileInputStream(file));
             Gson gson = new Gson();
-            ProcessPOJO pojo = gson.fromJson(br, ProcessPOJO.class);
+            ProcessPOJO pojo = gson.fromJson(inputStreamReader, ProcessPOJO.class);
             ArrayList<NodeProcessPOJO> nodeProcessPOJO = pojo.getNodeProcessPOJO();
             ArrayList<NodePOJO> nodePOJO = pojo.getNodePOJO();
 
@@ -170,7 +172,7 @@ public class POJOUtils {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                br.close();
+                inputStreamReader.close();
             } catch (IOException ex) {
                 Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
