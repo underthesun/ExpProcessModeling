@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 /**
- * 
+ * 原子过程Node对应的POJO类
  * @author shuai
  */
 public class NodePOJO {

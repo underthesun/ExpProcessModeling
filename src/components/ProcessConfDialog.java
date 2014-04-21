@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
- *
+ * 中间过程配置窗口
  * @author shuai
  */
 public class ProcessConfDialog extends javax.swing.JDialog {

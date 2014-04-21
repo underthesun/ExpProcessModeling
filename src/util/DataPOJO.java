@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package util;
 
 import java.util.ArrayList;
 
 /**
- * 
+ * 数据对应的POJO类
+ *
  * @author shuai
  */
 public class DataPOJO {
@@ -34,7 +34,7 @@ public class DataPOJO {
 
     public void setPackPOJO(ArrayList<ArrayList<PackagePOJO>> packPOJO) {
         this.packPOJO = packPOJO;
-    }    
+    }
 
     public int getPackNum() {
         return packNum;
@@ -67,5 +67,4 @@ public class DataPOJO {
     public void setPackOrientedPOJO(ArrayList<ArrayList<PackagePOJO>> packOrientedPOJO) {
         this.packOrientedPOJO = packOrientedPOJO;
     }
-    
 }

@@ -12,7 +12,7 @@ import javax.swing.border.TitledBorder;
 import main.NodePanel;
 
 /**
- *
+ * 
  * @author shuai
  */
 public class ResultDialog extends javax.swing.JDialog {

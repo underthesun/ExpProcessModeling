@@ -1,6 +1,4 @@
-/*
- * 中间过程，树中间节点
- */
+
 package processcheck;
 
 import components.DraggableButton;
@@ -21,6 +19,8 @@ import javax.swing.border.LineBorder;
 import main.ProcessPanel;
 
 /**
+ * 
+ * 中间过程节点类，代表过程建模中的中间过程
  *
  * @author shuai
  */
@@ -34,6 +34,14 @@ public class Process extends DraggableButton {
     private ProcessConfDialog dialog;
     private String pName;
 
+    /**
+     * 构建过程间过程
+     * @param s 中间过程文本信息
+     * @param p 中间过程位置信息
+     * @param isAotom 中间过程类型标识
+     * @param parent 中间过程父过程
+     * @param pp 过程建模面板
+     */
     public Process(String s, Point p, boolean isAotom, Process parent, ProcessPanel pp) {
         super(s, p);
         this.pName = s;
@@ -49,6 +57,10 @@ public class Process extends DraggableButton {
         }
     }
 
+    /**
+     * 为每个中间过程添加点击事件处理接口
+     * @param process 
+     */
     private void addListener(final Process process) {
         this.addMouseListener(new MouseAdapter() {
             @Override

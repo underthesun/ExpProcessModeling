@@ -1,6 +1,3 @@
-/*
- * 原子进程，图中节点
- */
 package processcheck;
 
 import components.DraggableButton;
@@ -15,6 +12,7 @@ import javax.swing.UIManager;
 import main.NodePanel;
 
 /**
+ * 原子过程节点类，表示过程图中的节点。
  *
  * @author shuai
  */
@@ -32,6 +30,14 @@ public class Node extends DraggableButton {
         Node.count = 0;
     }
 
+    /**
+     * 构造原子过程节点实例
+     *
+     * @param text 过程节点文本信息
+     * @param p 过程节点位置信息
+     * @param pid 过程节点标识
+     * @param np 过程图面板实例
+     */
     public Node(String text, Point p, int pid, NodePanel np) {
         super(text, p);
         this.id = count++;
@@ -43,6 +49,10 @@ public class Node extends DraggableButton {
         addListener(this);
     }
 
+    /**
+     * 为每个原子过程添加点击事件处理接口
+     * @param self 原子过程节点
+     */
     public void addListener(final Node self) {
         this.addMouseListener(new MouseAdapter() {
             @Override

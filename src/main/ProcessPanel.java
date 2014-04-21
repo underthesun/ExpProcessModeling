@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import processcheck.Process;
 
 /**
- *
+ * 过程建模面板
  * @author shuai
  */
 public class ProcessPanel extends javax.swing.JPanel {
@@ -39,12 +39,19 @@ public class ProcessPanel extends javax.swing.JPanel {
         setLayout(null);
     }
 
+    /**
+     * 添加跟节点按钮
+     */
     public final void addRoot() {
         Point p = new Point(5, Toolkit.getDefaultToolkit().getScreenSize().height / 2);
         Process root = new Process("root", p, false, null, this);
         addProcess(root);
     }
 
+    /**
+     * 覆盖原装的绘制函数，绘制过程节点按钮已经按钮之间的连线
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

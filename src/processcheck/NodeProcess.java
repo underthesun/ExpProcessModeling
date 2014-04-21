@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import main.NodePanel;
 
 /**
+ * 基本过程节点类，代表过程图中的基本过程
  *
  * @author shuai
  */
@@ -26,6 +27,13 @@ public class NodeProcess extends DraggableButton {
     private NodePanel nodePanel;
     private String pName;
 
+    /**
+     * 构造基本过程节点实例
+     * @param s 基本过程文本信息
+     * @param p 基本过程位置信息
+     * @param serial 基本过程标识
+     * @param np 过程图面板
+     */
     public NodeProcess(String s, Point p, int serial, NodePanel np) {
         super(s, p);
 //        this.pName = s;
@@ -36,6 +44,10 @@ public class NodeProcess extends DraggableButton {
         addListener(this);
     }
 
+    /**
+     * 为每个基本过程添加点击事件处理接口
+     * @param nodeProcess 
+     */
     public void addListener(final NodeProcess nodeProcess) {
         this.addMouseListener(new MouseAdapter() {
             @Override
@@ -117,6 +129,5 @@ public class NodeProcess extends DraggableButton {
 
     public void setpName(String pName) {
         this.pName = pName;
-    }   
-    
+    }
 }

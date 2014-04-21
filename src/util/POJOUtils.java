@@ -7,11 +7,9 @@ package util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.awt.Point;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -24,11 +22,17 @@ import processcheck.Node;
 import processcheck.NodeProcess;
 
 /**
- *
+ * 对过程图进行序列化和反序列化的工具类
  * @author b1106
  */
 public class POJOUtils {
 
+    /**
+     * 将过程图中的节点信息序列化到文件
+     * @param nodes 原子过程列表
+     * @param nodeProcesses 基本过程列表
+     * @param file 文件
+     */
     public static void toFile(ArrayList<Node> nodes, ArrayList<NodeProcess> nodeProcesses, File file) {
         OutputStreamWriter outputStreamWriter = null;
         try {
@@ -52,6 +56,11 @@ public class POJOUtils {
         }
     }
 
+    /**
+     * 原子过程序列化
+     * @param nodes 原子过程列表
+     * @return 原子过程序列化结果
+     */
     public static ArrayList<NodePOJO> nodeToPOJO(ArrayList<Node> nodes) {
         ArrayList<NodePOJO> nodePOJOs = new ArrayList<NodePOJO>();
         for (Node node : nodes) {
@@ -80,6 +89,11 @@ public class POJOUtils {
         return nodePOJOs;
     }
 
+    /**
+     * 中间过程序列化
+     * @param nodeProcesses 中间过程列表
+     * @return 中间过程序列化结果
+     */
     public static ArrayList<NodeProcessPOJO> nodeProcessToPOJO(ArrayList<NodeProcess> nodeProcesses) {
         ArrayList<NodeProcessPOJO> nodeProcessPOJO = new ArrayList<NodeProcessPOJO>();
         for (NodeProcess np : nodeProcesses) {
@@ -100,6 +114,11 @@ public class POJOUtils {
         return nodeProcessPOJO;
     }
 
+    /**
+     * 从文件中反序列化得到过程图
+     * @param file 文件
+     * @param nodePanel 过程图面板
+     */
     public static void fromFile(File file, NodePanel nodePanel) {
         InputStreamReader inputStreamReader = null;
         try {

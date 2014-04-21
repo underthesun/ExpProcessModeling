@@ -5,7 +5,7 @@
 
 package util;
 /**
- * 
+ * 物品包Package对应的POJO类
  * @author shuai
  */
 public class PackagePOJO extends ItemPOJO{

@@ -6,7 +6,7 @@
 package util;
 
 /**
- * 
+ * 物品Item对应的POJO类
  * @author shuai
  */
 public class ItemPOJO {

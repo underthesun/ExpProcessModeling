@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 /**
- *
+ * 中间过程NodeProcess对应的POJO类
  * @author shuai
  */
 public class NodeProcessPOJO {

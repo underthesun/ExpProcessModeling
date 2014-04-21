@@ -26,7 +26,7 @@ import util.DataPOJO;
 import util.POJOUtils;
 
 /**
- *
+ * 过程建模主界面
  * @author shuai
  */
 public class MainPanel extends javax.swing.JPanel {
@@ -256,6 +256,9 @@ public class MainPanel extends javax.swing.JPanel {
         repaint();
     }
 
+    /**
+     * 设置按钮的状态
+     */
     public void disableBtns() {
         this.btnSim.setEnabled(false);
         this.btnCancel.setEnabled(false);
@@ -266,6 +269,9 @@ public class MainPanel extends javax.swing.JPanel {
         this.btnCancel.setEnabled(true);
     }
 
+    /**
+     * 将过程图保存为文件
+     */
     public void saveNodeStructure() {
         JFileChooser fc = new JFileChooser();
         if (fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -282,6 +288,9 @@ public class MainPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * 从文件获取过程图
+     */
     public void openNodeStructure() {
         JFileChooser fc = new JFileChooser();
         if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -299,6 +308,9 @@ public class MainPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * 载入数据
+     */
     public void loadData() {
         JFileChooser fc = new JFileChooser();
         if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {

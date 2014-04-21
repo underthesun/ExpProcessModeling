@@ -20,11 +20,12 @@ import processcheck.Node;
 import processcheck.NodeProcess;
 
 /**
+ * 过程图展示面板
  *
  * @author shuai
  */
 public class NodePanel extends javax.swing.JPanel {
-    
+
     private ArrayList<NodeProcess> nodeProcess;
     private ArrayList<Node> nodes;
     private NodeConfDialog nodeDialog;
@@ -43,7 +44,11 @@ public class NodePanel extends javax.swing.JPanel {
         resultDialog = new ResultDialog((Frame) getParent(), false, this);
         setLayout(null);
     }
-    
+
+    /**
+     * 覆盖原装的绘制函数，绘制过程节点按钮已经按钮之间的连线
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -107,35 +112,35 @@ public class NodePanel extends javax.swing.JPanel {
     public ArrayList<NodeProcess> getNodeProcess() {
         return nodeProcess;
     }
-    
+
     public void setNodeProcess(ArrayList<NodeProcess> nodeProcess) {
         this.nodeProcess = nodeProcess;
     }
-    
+
     public ArrayList<Node> getNodes() {
         return nodes;
     }
-    
+
     public void setNodes(ArrayList<Node> nodes) {
         this.nodes = nodes;
     }
-    
+
     public NodeConfDialog getNodeDialog() {
         return nodeDialog;
     }
-    
+
     public void setNodeDialog(NodeConfDialog nodeDialog) {
         this.nodeDialog = nodeDialog;
     }
-    
+
     public ResultDialog getResultDialog() {
         return resultDialog;
     }
-    
+
     public void setResultDialog(ResultDialog resultDialog) {
         this.resultDialog = resultDialog;
     }
-    
+
     public int getMaxWidth() {
         int maxWidth = 0;
         for (NodeProcess np : nodeProcess) {
@@ -152,7 +157,7 @@ public class NodePanel extends javax.swing.JPanel {
         }
         return maxWidth;
     }
-    
+
     public int getMaxHeight() {
         int maxHeight = 0;
         for (NodeProcess np : nodeProcess) {
@@ -169,7 +174,7 @@ public class NodePanel extends javax.swing.JPanel {
         }
         return maxHeight;
     }
-    
+
     public void addNodeProcess(NodeProcess np) {
         add(np);
         nodeProcess.add(np);
@@ -186,7 +191,7 @@ public class NodePanel extends javax.swing.JPanel {
         setPreferredSize(new Dimension(width, height));
         revalidate();
     }
-    
+
     public void addNode(Node n) {
         add(n);
         nodes.add(n);
@@ -203,7 +208,7 @@ public class NodePanel extends javax.swing.JPanel {
         setPreferredSize(new Dimension(width, height));
         revalidate();
     }
-    
+
     public boolean isAllHaveNodes() {
         boolean flag = true;
         for (NodeProcess np : nodeProcess) {
@@ -215,7 +220,7 @@ public class NodePanel extends javax.swing.JPanel {
         }
         return flag;
     }
-    
+
     public boolean isAllAssociated() {
         boolean flag = true;
         if (nodeProcess.size() > 1) {
@@ -227,7 +232,7 @@ public class NodePanel extends javax.swing.JPanel {
         }
         return flag;
     }
-    
+
     public void reset() {
         for (NodeProcess np : nodeProcess) {
             np.reset();
@@ -239,7 +244,7 @@ public class NodePanel extends javax.swing.JPanel {
         nodes.clear();
         repaint();
     }
-    
+
     public void colorResest() {
         for (NodeProcess np : nodeProcess) {
             np.setBackground(UIManager.getColor("Button.ground"));
@@ -249,7 +254,7 @@ public class NodePanel extends javax.swing.JPanel {
         }
         repaint();
     }
-    
+
     public NodeProcess getPostNodeProcess(int proId) {
         NodeProcess nextNp = null;
         if (proId < nodeProcess.size()) {
@@ -258,10 +263,10 @@ public class NodePanel extends javax.swing.JPanel {
                     nextNp = np;
                 }
             }
-        }        
+        }
         return nextNp;
     }
-    
+
     public NodeProcess getPreNodeProcess(int proId) {
         NodeProcess preNp = null;
         if (proId > 0) {
@@ -271,7 +276,7 @@ public class NodePanel extends javax.swing.JPanel {
                 }
             }
         }
-        
+
         return preNp;
     }
 }

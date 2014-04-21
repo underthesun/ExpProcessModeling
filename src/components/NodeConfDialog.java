@@ -12,7 +12,7 @@ import main.NodePanel;
 import processcheck.Node;
 
 /**
- *
+ * 基本过程配置窗口
  * @author shuai
  */
 public class NodeConfDialog extends javax.swing.JDialog {
@@ -169,10 +169,6 @@ public class NodeConfDialog extends javax.swing.JDialog {
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     *
-     * @param nodes
-     */
     public void setNodes(ArrayList<Node> nodes) {
         mainPanel.removeAll();
         if (!nodes.isEmpty()) {
